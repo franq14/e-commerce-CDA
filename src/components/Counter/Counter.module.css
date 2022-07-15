@@ -1,0 +1,22 @@
+.upperCount{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.counter{
+    align-self: center;
+}
+
+.button{
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    height: fit-content;
+    padding: 5px;
+}
+
+.text{
+    margin: 0px;
+}
