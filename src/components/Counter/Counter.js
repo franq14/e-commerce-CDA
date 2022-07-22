@@ -1,13 +1,13 @@
 import { useState } from "react";
 import style from './Counter.module.css';
 
-const Counter = ({stock, addToCart}) => {
-    const [count, setCount] = useState(0);
+const Counter = ({stock, addToCart, initial}) => {
+    const [count, setCount] = useState(initial);
 
     return (
         <div className={style.counter}>
             <div className={style.upperCount}>
-                <button className={style.button} onClick={() => (count > 0 && setCount(count - 1))}>-</button>
+                <button className={style.button} onClick={() => (count > 1 && setCount(count - 1))}>-</button>
                 <h3 className={style.text}>
                     {count}
                 </h3>

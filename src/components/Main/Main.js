@@ -1,23 +1,20 @@
-import style from './Main.module.css';
-import Counter from '../Counter/Counter';
-import { useState } from "react";
+import { Route, Routes } from 'react-router-dom';
+import CardContainer from '../CardContainer/CardContainer';
+import Cart from '../Cart/Cart';
+import DetailContainer from '../DetailContainer/DetailContainer';
 
 const Main = () => {
-    const [stock, setStock] = useState(10);
-
-    const addToCart = (count) => {
-        console.log(count, " items added to cart");
-    }
-
     return (
-        <div className='bodyDiv'>
-            <h3>
-                Catalogo
-            </h3>
-            <div className={style.itemCatalogue}>
-                <img src='logo192.png' alt='img'/>
-                <Counter stock={stock} addToCart={addToCart}/>
-            </div>
+        <div>
+            <Routes>
+                <Route path="/" element={<CardContainer />} />
+                <Route
+                    path="/category/:categoryId"
+                    element={<CardContainer />}
+                />
+                <Route path="/detail/:id" element={<DetailContainer />} />
+                <Route path="/cart" element={<Cart />} />
+            </Routes>
         </div>
     )
 }

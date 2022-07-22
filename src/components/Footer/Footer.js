@@ -3,7 +3,6 @@ import './Footer.css'
 
 const Footer = () => {
     const prueba = () => {
-        console.log('Click on footer');
     };
 
     return (

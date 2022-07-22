@@ -12,13 +12,13 @@
     align-items: center;
 }
 
-.navFooter h2 {
-    color: 'white';
-}
-
 .nav ul {
     display: flex;
     list-style: none;
+}
+
+.nav li {
+    color: white;
 }
 
 .navFooter ul {
@@ -38,6 +38,22 @@
     width: 50px;
 }
 
+.navFooter img:hover{
+    cursor: pointer;
+}
+
 .nav img {
     width: 50px;
+}
+
+.nav img:hover{
+    cursor: pointer;
+}
+
+.navFooter li:hover{
+    cursor: pointer;
+}
+
+.nav li:hover{
+    cursor: pointer;
 }

@@ -3,13 +3,12 @@ import style from './Header.module.css';
 
 const Header = () => {
     const prueba = () => {
-        console.log('Click on header');
     };
 
     return (
-        <div className={style.header}>
+        <header className={style.header}>
             <Nav isInHedaer={true} prueba={prueba} />
-        </div>
+        </header>
     )
 }
 
