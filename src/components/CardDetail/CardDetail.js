@@ -17,7 +17,7 @@ const CardDetail = ({ item }) => {
                     architecto culpa dolore nemo illum, enim iste?
                 </p>
                 <h3>$ {item.price}</h3>
-                <Counter stock={item.stock} initial={1} onAdd={onAdd} />
+                <Counter stock={item.stock} initial={1} addToCart={onAdd} />
             </div>
         </div>
     );
