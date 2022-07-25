@@ -1,8 +1,9 @@
 import Card from '../Card/Card';
+import style from './CardList.module.css'
 
 const CardList = ({ items }) => {
     return (
-        <div style={{ display: 'flex', flexWrap: 'wrap', width: '80%' }}>
+        <div className={style.cardList}>
             {items.map((prod) => (
                 <Card prod={prod} key={prod.id} />
             ))}

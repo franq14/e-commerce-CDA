@@ -16,8 +16,10 @@ const CardDetail = ({ item }) => {
                     aperiam, corporis voluptate repudiandae ducimus qui, beatae
                     architecto culpa dolore nemo illum, enim iste?
                 </p>
-                <h3>$ {item.price}</h3>
-                <Counter stock={item.stock} initial={1} addToCart={onAdd} />
+                <div className={style.priceContainer}>
+                    <h3>$ {item.price}</h3>
+                    <Counter stock={item.stock} initial={1} addToCart={onAdd} />
+                </div>
             </div>
         </div>
     );
