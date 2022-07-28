@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 import CartDetail from '../CartDetail/CartDetail';
 import s from './Cart.module.css';
@@ -8,6 +8,7 @@ const Cart = () => {
     const { cart, clearCart, addOne, leaveOne, deleteOne } = useContext(CartContext);
 
     const navigate = useNavigate()
+    console.log(cart);
 
     if (cart.length === 0) {
         return (
