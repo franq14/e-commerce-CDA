@@ -26,7 +26,7 @@ const CardContainer = () => {
                 alignItems: 'center',
             }}
         >
-            <h2>Artículos</h2>
+            <h2>{categoryId ? categoryId.charAt(0).toUpperCase() + categoryId.slice(1) : "Artículos"}</h2>
             <CardList items={items} />
         </div>
     );
