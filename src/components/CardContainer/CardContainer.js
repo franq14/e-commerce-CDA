@@ -10,8 +10,6 @@ const CardContainer = () => {
         const URL = "https://fake-products-eric.herokuapp.com/api/products";
         const peticion = categoryId ? `${URL}/category/${categoryId}` : URL;
 
-        console.log(categoryId);
-
         fetch(peticion)
             .then((res) => res.json())
             .then((res) => setItems(res))

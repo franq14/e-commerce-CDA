@@ -1,0 +1,70 @@
+.containerCartDetail {
+    display: flex;
+    background-color: rgb(229, 233, 235);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.infoCartDetail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.infoCartDetail img {
+    width: 70px;
+    border-radius: 8px;
+}
+
+.infoCartDetail article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoCartDetail article h3 {
+    margin: 0px 5px;
+}
+
+.infoCartDetail article h4 {
+    margin: 0px 5px;
+}
+
+.infoCartDetail article h5 {
+    margin: 0px 5px;
+}
+
+.subtotal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: black;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.boton {
+    padding: 6px 8px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: 1px solid white;
+}
+
+.botonDelete {
+    padding: 6px 8px;
+    border-radius: 5px;
+    background-color: rgba(239, 112, 112, 0.895);
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+}

@@ -2,12 +2,9 @@ import Nav from '../Nav/Nav';
 import style from './Header.module.css';
 
 const Header = () => {
-    const prueba = () => {
-    };
-
     return (
         <header className={style.header}>
-            <Nav isInHedaer={true} prueba={prueba} />
+            <Nav isInHedaer={true}/>
         </header>
     )
 }

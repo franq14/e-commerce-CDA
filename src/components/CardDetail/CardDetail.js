@@ -1,8 +1,17 @@
+import { useContext } from 'react';
 import style from './CardDetail.module.css';
 import Counter from '../Counter/Counter';
+import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../../context/CartContext';
 
 const CardDetail = ({ item }) => {
-    const onAdd = () => {
+    const { addToCart } = useContext(CartContext);
+
+    const navigate = useNavigate();
+
+    const onAdd = (cantidad) => {
+        addToCart(item, cantidad);
+        navigate('/cart');
     };
     
     return (
