@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import CardContainer from '../CardContainer/CardContainer';
 import Cart from '../Cart/Cart';
 import DetailContainer from '../DetailContainer/DetailContainer';
+import Favs from '../Favs/Favs';
 
 const Main = () => {
     return (
@@ -14,7 +15,7 @@ const Main = () => {
                 />
                 <Route path="/detail/:id" element={<DetailContainer />} />
                 <Route path="/cart" element={<Cart />} />
-                {/* <Route path="/favs" element={} /> */}
+                <Route path="/favs" element={<Favs />} />
             </Routes>
         </div>
     )

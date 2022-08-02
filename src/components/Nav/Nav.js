@@ -49,10 +49,13 @@ const Nav = ({ isInHedaer }) => {
                 <li onClick={() => handleClick(isInHedaer ? 'Camisas' : 'Facebok')}>{isInHedaer ? 'Camisas' : 'Facebok'}</li>
                 <li onClick={() => handleClick(isInHedaer ? 'Gorras' : 'Linkedin')}>{isInHedaer ? 'Gorras' : 'Linkedin'}</li>
             </ul>
-                <div style={{display: 'flex'}}>
-                    {isInHedaer && cart.length > 0 && <h2 className={s.prodCount}>{totalCantidad}</h2>}
-                    <img onClick={() => handleClick(isInHedaer ? carrito : 'logo192.png')} src={isInHedaer ? carrito : 'logo192.png'} alt="logo" />
-                </div>
+            <Link to="/favs">
+                <h2>FAVS</h2>
+            </Link>
+            <div style={{display: 'flex'}}>
+                {isInHedaer && cart.length > 0 && <h2 className={s.prodCount}>{totalCantidad}</h2>}
+                <img onClick={() => handleClick(isInHedaer ? carrito : 'logo192.png')} src={isInHedaer ? carrito : 'logo192.png'} alt="logo" />
+            </div>
         </nav>
     );
 };

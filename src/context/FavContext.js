@@ -1,9 +1,13 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 export const FavContext = createContext();
 
 const FavProvider = (props) => {
-    const [fav, setFav] = useState([]);
+    const [fav, setFav] = useState(localStorage.getItem('Favs') ? JSON.parse(localStorage.getItem('Favs')) : []);
+
+    useEffect(() => {
+        localStorage.setItem('Favs', JSON.stringify(fav));
+    }, [fav])
     
     const addToFav = (item) => {
         if(isInFav(item.id)){
@@ -18,7 +22,7 @@ const FavProvider = (props) => {
     }
 
     return (
-        <FavContext.Provider value={{fav, addToFav}}>
+        <FavContext.Provider value={{fav, addToFav, isInFav}}>
             {props.children}
         </FavContext.Provider>
     );

@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const CartContext = createContext();
 
@@ -26,32 +26,24 @@ const CartProvider = (props) => {
     };
 
     const addOne = (id, cantidad) => {
-        console.log(cart.map((prod) =>
-        prod.id === id
-            ? {
-                  ...prod,
-                  cantidad: cantidad ? prod.cantidad + cantidad : prod.cantidad++,
-              }
-            : prod
-        ))
-
         setCart(cart.map((prod) =>
-        prod.id === id
-            ? {
-                  ...prod,
-                  cantidad: cantidad ? prod.cantidad + cantidad : prod.cantidad++,
-              }
-            : prod
-    ))
+            prod.id === id
+                ? {
+                    ...prod,
+                    cantidad: cantidad ? prod.cantidad + cantidad : prod.cantidad++,
+                }
+                : prod
+            )
+        )
     }
-    
 
     const leaveOne = (id) => {
         setCart( cart.map((prod) =>
-        prod.id === id
-            ? { ...prod, cantidad: prod.cantidad - 1 }
-            : prod
-        ))
+            prod.id === id
+                ? { ...prod, cantidad: prod.cantidad - 1 }
+                : prod
+            )
+        )
     }
 
     const deleteOne = (id) => {
