@@ -6,7 +6,7 @@ import { Link, useNavigate  } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 
 const Nav = ({ isInHedaer }) => {
-    const { cart } = useContext(CartContext);
+    const { cart, totalCantidad } = useContext(CartContext);
 
     const navigate = useNavigate()
 
@@ -50,7 +50,7 @@ const Nav = ({ isInHedaer }) => {
                 <li onClick={() => handleClick(isInHedaer ? 'Gorras' : 'Linkedin')}>{isInHedaer ? 'Gorras' : 'Linkedin'}</li>
             </ul>
                 <div style={{display: 'flex'}}>
-                    {isInHedaer && cart.length > 0 && <h2 className={s.prodCount}>{cart.length}</h2>}
+                    {isInHedaer && cart.length > 0 && <h2 className={s.prodCount}>{totalCantidad}</h2>}
                     <img onClick={() => handleClick(isInHedaer ? carrito : 'logo192.png')} src={isInHedaer ? carrito : 'logo192.png'} alt="logo" />
                 </div>
         </nav>

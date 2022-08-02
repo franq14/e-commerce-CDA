@@ -5,10 +5,9 @@ import CartDetail from '../CartDetail/CartDetail';
 import s from './Cart.module.css';
 
 const Cart = () => {
-    const { cart, clearCart, addOne, leaveOne, deleteOne } = useContext(CartContext);
+    const { cart, clearCart, addOne, leaveOne, deleteOne, totalPrice } = useContext(CartContext);
 
     const navigate = useNavigate()
-    console.log(cart);
 
     if (cart.length === 0) {
         return (
@@ -36,7 +35,7 @@ const Cart = () => {
                     <button className={s.vaciar} onClick={clearCart}>
                         Vaciar carrito
                     </button>
-                    <h2>Total: ${cart.reduce((sum, prod) => sum + (prod.price * prod.cantidad), 0)}</h2>
+                    <h2>Total: ${totalPrice}</h2>
                 </div>
             </div>
         </>

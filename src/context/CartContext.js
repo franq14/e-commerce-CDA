@@ -1,16 +1,22 @@
-import { createContext, useState } from 'react';
+import { createContext, useCallback, useEffect, useState } from 'react';
 
 export const CartContext = createContext();
 
 const CartProvider = (props) => {
     const [cart, setCart] = useState(localStorage.getItem('Cart') ? JSON.parse(localStorage.getItem('Cart')) : []);
+    const [totalPrice, setTotalPrice] = useState(0);
+    const [totalCantidad, setTotalCantidad] = useState(0);
+
+    useEffect(() => {
+        totalPriceSetter();
+        totalCantidadSetter();
+        localStorage.setItem('Cart', JSON.stringify(cart));
+    }, [cart])
 
     const addToCart = (item, cantidad) => {
         if (isInCart(item.id)) {
             addOne(item.id, cantidad);
         } else {
-            localStorage.removeItem('Cart');
-            localStorage.setItem('Cart', JSON.stringify([...cart, { ...item, cantidad }]))
             setCart([...cart, { ...item, cantidad }]);
         }
     };
@@ -20,41 +26,53 @@ const CartProvider = (props) => {
     };
 
     const addOne = (id, cantidad) => {
-        setCart( cart => {
-            const newCart = cart.map( prod => {
-                if(prod.id === id){
-                    return {...prod, cantidad: cantidad ? prod.cantidad + cantidad : prod.cantidad++}
-                }
-                else {
-                    return prod;
-                }
-            })
-            localStorage.removeItem('Cart');
-            localStorage.setItem('Cart', JSON.stringify(newCart))
-            return newCart;
-        })
+        console.log(cart.map((prod) =>
+        prod.id === id
+            ? {
+                  ...prod,
+                  cantidad: cantidad ? prod.cantidad + cantidad : prod.cantidad++,
+              }
+            : prod
+        ))
+
+        setCart(cart.map((prod) =>
+        prod.id === id
+            ? {
+                  ...prod,
+                  cantidad: cantidad ? prod.cantidad + cantidad : prod.cantidad++,
+              }
+            : prod
+    ))
     }
+    
 
     const leaveOne = (id) => {
-        setCart( cart => {
-            const newCart = cart.map( prod => {
-                if(prod.id === id){
-                    return {...prod, cantidad: prod.cantidad--}
-                }
-                else {
-                    return prod;
-                }
-            })
-            localStorage.removeItem('Cart');
-            localStorage.setItem('Cart', JSON.stringify(newCart))
-            return newCart;
-        })
+        setCart( cart.map((prod) =>
+        prod.id === id
+            ? { ...prod, cantidad: prod.cantidad - 1 }
+            : prod
+        ))
     }
 
     const deleteOne = (id) => {
-        const productosFiltrados = cart.filter((prod) => prod.id !== id);
-        setCart(productosFiltrados);
+        setCart(cart.filter((prod) => prod.id !== id));
     };
+
+    const totalPriceSetter = () => {
+        let count = 0;
+        [...cart].forEach(prod => 
+            count += prod.price * prod.cantidad
+        )
+        setTotalPrice(count);
+    }
+
+    const totalCantidadSetter = () => {
+        let count = 0;
+        [...cart].forEach(prod => 
+            count += prod.cantidad
+        )
+        setTotalCantidad(count);
+    }
 
     const clearCart = () => {
         setCart([]);
@@ -62,7 +80,7 @@ const CartProvider = (props) => {
     };
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, addOne, leaveOne, clearCart, deleteOne }}>
+        <CartContext.Provider value={{ cart, addToCart, addOne, leaveOne, totalPrice, totalCantidad, clearCart, deleteOne }}>
             {props.children}
         </CartContext.Provider>
     );

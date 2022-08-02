@@ -14,6 +14,7 @@ const Main = () => {
                 />
                 <Route path="/detail/:id" element={<DetailContainer />} />
                 <Route path="/cart" element={<Cart />} />
+                {/* <Route path="/favs" element={} /> */}
             </Routes>
         </div>
     )
