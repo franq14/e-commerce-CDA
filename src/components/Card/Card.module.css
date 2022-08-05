@@ -13,7 +13,7 @@
     cursor: pointer;
 }
 
-.card img {
+.prodImage {
     width: 170px;
     object-fit: cover;
     border-bottom: 5px solid rgba(204, 204, 204, 0.278);;
@@ -36,4 +36,23 @@
     font-size: 16px;
     font-weight: 300;
     margin: 0px;
+    align-self: center;
+}
+
+.heartButton {
+    background-color: transparent;
+    border: transparent;
+}
+
+.heartImage {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 4px;
+}
+
+.detailButton {
+    background-color: black;
+    color: white;
+    padding: 10px 0px;
 }
