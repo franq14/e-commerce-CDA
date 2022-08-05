@@ -3,6 +3,7 @@ import CardContainer from "../CardContainer/CardContainer";
 import Cart from "../Cart/Cart";
 import DetailContainer from "../DetailContainer/DetailContainer";
 import Favs from "../Favs/Favs";
+import Checkout from "../Checkout/Checkout";
 
 const Main = () => {
   return (
@@ -13,6 +14,7 @@ const Main = () => {
         <Route path="/detail/:id" element={<DetailContainer />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/favs" element={<Favs />} />
+        <Route path="/checkout/:idCompra" element={<Checkout />} />
       </Routes>
     </div>
   );

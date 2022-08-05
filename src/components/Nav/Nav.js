@@ -1,87 +1,113 @@
 import { useContext } from "react";
 import s from "./Nav.module.css";
 import carrito from "../../assets/whiteCart.png";
-import cdaIcon from "../../assets/CDAIcon.jpg";
+import cdaIcon from "../../assets/CDA.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import whiteFilledHeart from "../../assets/whiteFilledHeart.svg";
 
 const Nav = ({ isInHedaer }) => {
   const { cart, totalCantidad } = useContext(CartContext);
 
   const navigate = useNavigate();
 
-  const handleClick = (arg) => {
-    switch (arg) {
-      case "Remeras":
-        navigate("/category/remeras");
-        break;
-      case "Camisas":
-        navigate("/category/camisas");
-        break;
-      case "Gorras":
-        navigate("/category/gorras");
-        break;
-      case "Riñoneras":
-        navigate("/category/rinoneras");
-        break;
-      case "Billeteras":
-        navigate("/category/billeteras");
-        break;
-      case "Instagram":
-        window.location.href = "https://www.instagram.com/cda_informatica/";
-        break;
-      case "Facebok":
-        window.location.href = "https://www.facebook.com/apasionadosIT";
-        break;
-      case "Linkedin":
-        window.location.href =
-          "https://www.linkedin.com/company/cda-informatica/mycompany/";
-        break;
-      case carrito:
-        navigate("/cart");
-        break;
-      case "logo192.png":
-        window.location.href = "https://reactjs.org/";
-        break;
-    }
-  };
-
   return (
-    <nav className={isInHedaer ? s.nav : s.navFooter}>
-      <Link to="/">
-        <img src={cdaIcon} alt="logo" />
-      </Link>
-      <ul>
-        <li onClick={() => handleClick(isInHedaer ? "Remeras" : "Instagram")}>
-          {isInHedaer ? "Remeras" : "Instagram"}
-        </li>
-        <li onClick={() => handleClick(isInHedaer ? "Camisas" : "Facebok")}>
-          {isInHedaer ? "Camisas" : "Facebok"}
-        </li>
-        <li onClick={() => handleClick(isInHedaer ? "Gorras" : "Linkedin")}>
-          {isInHedaer ? "Gorras" : "Linkedin"}
-        </li>
-        <li onClick={() => handleClick(isInHedaer ? "Riñoneras" : "Linkedin")}>
-          {isInHedaer ? "Riñoneras" : "Linkedin"}
-        </li>
-        <li onClick={() => handleClick(isInHedaer ? "Billeteras" : "Linkedin")}>
-          {isInHedaer ? "Billeteras" : "Linkedin"}
-        </li>
-      </ul>
-      <Link to="/favs">
-        <h2>FAVS</h2>
-      </Link>
-      <div style={{ display: "flex" }}>
-        {isInHedaer && cart.length > 0 && (
-          <h2 className={s.prodCount}>{totalCantidad}</h2>
-        )}
-        <img
-          onClick={() => handleClick(isInHedaer ? carrito : "logo192.png")}
-          src={isInHedaer ? carrito : "logo192.png"}
-          alt="logo"
-        />
-      </div>
-    </nav>
+    <>
+      {isInHedaer ? (
+        <nav className={s.nav}>
+          <Link to="/">
+            <img style={{ width: "140px" }} src={cdaIcon} alt="logo" />
+          </Link>
+          <ul style={{ gap: "15px" }}>
+            <li>
+              <Link className={s.textListDecoration} to={"/category/remeras"}>
+                Remeras
+              </Link>
+            </li>
+            <li>
+              <Link className={s.textListDecoration} to={"/category/camisas"}>
+                Camisas
+              </Link>
+            </li>
+            <li>
+              <Link className={s.textListDecoration} to={"/category/gorras"}>
+                Gorras
+              </Link>
+            </li>
+            <li>
+              <Link className={s.textListDecoration} to={"/category/rinoneras"}>
+                Riñoneras
+              </Link>
+            </li>
+            <li>
+              <Link
+                className={s.textListDecoration}
+                to={"/category/billeteras"}
+              >
+                Billeteras
+              </Link>
+            </li>
+          </ul>
+          <div style={{ display: "flex", gap: "40px" }}>
+            <Link to="/favs">
+              <img
+                style={{
+                  width: "60px",
+                  height: "max-content",
+                  alignContent: "center",
+                }}
+                src={whiteFilledHeart}
+                alt="favsButton"
+              />
+            </Link>
+            <div style={{ display: "flex" }}>
+              {cart.length > 0 && (
+                <h2 className={s.prodCount}>{totalCantidad}</h2>
+              )}
+              <img
+                onClick={() => navigate("/cart")}
+                style={{
+                  width: "60px",
+                  height: "max-content",
+                  alignContent: "center",
+                }}
+                src={carrito}
+                alt="logo"
+              />
+            </div>
+          </div>
+        </nav>
+      ) : (
+        <nav className={s.navFooter}>
+          <ul style={{ gap: "20px" }}>
+            <li>
+              <a
+                className={s.textListDecoration}
+                href="https://www.instagram.com/cda_informatica/"
+              >
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                className={s.textListDecoration}
+                href="https://www.facebook.com/apasionadosIT"
+              >
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a
+                className={s.textListDecoration}
+                href="https://www.linkedin.com/company/cda-informatica/mycompany/"
+              >
+                Linkedin
+              </a>
+            </li>
+          </ul>
+        </nav>
+      )}
+    </>
   );
 };
 

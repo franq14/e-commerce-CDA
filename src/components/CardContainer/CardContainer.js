@@ -13,26 +13,34 @@ const CardContainer = () => {
 
     fetch(peticion)
       .then((res) => res.json())
-      .then((res) => setItems(res))
-      .catch((err) => console.log(err), setLoading(false));
+      .then((res) => setItems(res), setLoading(false))
+      .catch((err) => console.log(err));
   }, [categoryId]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <h2>
-        {categoryId
-          ? categoryId.charAt(0).toUpperCase() + categoryId.slice(1)
-          : "Artículos"}
-      </h2>
-      <CardList items={items} />
-    </div>
+    <>
+      {loading ? (
+        <>
+          <h2>Cargando...</h2>
+        </>
+      ) : (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <h2>
+            {categoryId
+              ? categoryId.charAt(0).toUpperCase() + categoryId.slice(1)
+              : "Artículos"}
+          </h2>
+          <CardList items={items} />
+        </div>
+      )}
+    </>
   );
 };
 

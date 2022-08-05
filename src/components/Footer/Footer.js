@@ -1,9 +1,8 @@
 import Nav from "../Nav/Nav";
-import "./Footer.css";
 
 const Footer = () => {
   return (
-    <div className="footerDiv">
+    <div>
       <Nav isInHedaer={false} />
     </div>
   );

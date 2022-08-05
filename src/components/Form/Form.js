@@ -26,7 +26,6 @@ const Form = ({ cart, totalPrice, clearCart }) => {
       }),
     });
     const response = await enviarInfo.json();
-    console.log("response", response);
     setLoading(false);
     clearCart();
     navigate(`/checkout/${response.id}`);
@@ -37,33 +36,43 @@ const Form = ({ cart, totalPrice, clearCart }) => {
     order();
   };
 
-  const handleChangeUser = (e) => {
-    setUser(e.target.value);
-  };
-  const handleChangePhone = (e) => {
-    setPhone(e.target.value);
-  };
-
   return (
-    <div>
-      <form className={s.form} onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="nombre"
-          placeholder="Ingresa tu nombre"
-          onChange={handleChangeUser}
-          value={user}
-        />
-        <input
-          type="text"
-          name="telefono"
-          placeholder="Ingresa tu telefono"
-          onChange={handleChangePhone}
-          value={phone}
-        />
+    <form className={s.form} onSubmit={handleSubmit}>
+      <h2
+        style={{
+          color: "white",
+          alignSelf: "center",
+          borderBottom: "3px solid white",
+          marginBottom: "0px",
+          paddingBottom: "30px",
+        }}
+      >
+        Finalizar compra
+      </h2>
+      <div>
+        <div>
+          <h3 style={{ color: "white", margin: "0" }}>Nombre del cliente</h3>
+          <input
+            type="text"
+            name="nombre"
+            placeholder="Ingresa tu nombre"
+            onChange={(e) => setUser(e.target.value)}
+            value={user}
+          />
+        </div>
+        <div>
+          <h3 style={{ color: "white", margin: "0" }}>Celular del cliente</h3>
+          <input
+            type="text"
+            name="telefono"
+            placeholder="Ingresa tu telefono"
+            onChange={(e) => setPhone(e.target.value)}
+            value={phone}
+          />
+        </div>
         <button>{loading ? "Enviando...." : " Enviar "}</button>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
 export default Form;

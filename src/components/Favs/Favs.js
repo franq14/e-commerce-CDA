@@ -1,11 +1,13 @@
 import CardList from "../CardList/CardList";
 import { FavContext } from "../../context/FavContext";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import style from "./Favs.module.css";
 
 const Favs = () => {
   const { fav } = useContext(FavContext);
+
+  const navigate = useNavigate();
 
   return (
     <div
@@ -16,13 +18,18 @@ const Favs = () => {
         alignItems: "center",
       }}
     >
-      <h3>Favoritos</h3>
       {fav.length !== 0 ? (
-        <CardList items={fav} />
+        <>
+          <h3 style={{ fontSize: "20px" }}>Favoritos</h3>
+          <CardList items={fav} />
+        </>
       ) : (
-        <Link className={style.botonDelete} to="/">
-          Ver lista de productos ;)
-        </Link>
+        <div className={style.favsContainerVoid}>
+          <h1>Ups... Todavia no agregaste ningún producto a favoritos :(</h1>
+          <button className={style.botonDelete} onClick={() => navigate("/")}>
+            Agregar producto
+          </button>
+        </div>
       )}
     </div>
   );

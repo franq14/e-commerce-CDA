@@ -10,9 +10,18 @@ function App() {
     <FavProvider>
       <CartProvider>
         <BrowserRouter>
-          <Header />
-          <Main />
-          <Footer />
+          <div
+            style={{
+              height: "100vh",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <Header />
+            <Main />
+            <Footer />
+          </div>
         </BrowserRouter>
       </CartProvider>
     </FavProvider>
