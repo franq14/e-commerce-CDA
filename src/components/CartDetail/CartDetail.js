@@ -2,7 +2,6 @@ import React from "react";
 import s from "./CartDetail.module.css";
 import trashCan from "../../assets/trashCan.svg";
 import blackArrow from "../../assets/blackArrow.svg";
-import whiteArrow from "../../assets/whiteArrow.svg";
 import { Link } from "react-router-dom";
 
 const CartDetail = ({ prod, addOne, leaveOne, deleteOne }) => {
@@ -12,7 +11,6 @@ const CartDetail = ({ prod, addOne, leaveOne, deleteOne }) => {
         <div
           style={{
             display: "flex",
-            backgroundColor: "rgb(251,251,251)",
             borderRadius: "10px",
           }}
         >

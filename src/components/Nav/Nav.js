@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import s from "./Nav.module.css";
-import carrito from "../../assets/whiteCart.png";
+import carrito from "../../assets/whiteCart.svg";
 import cdaIcon from "../../assets/CDA.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
